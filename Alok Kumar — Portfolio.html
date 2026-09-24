@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alok Kumar — Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0F14; --panel:#111820; --line:#233040; --line-soft:#1A2430;
+  --text:#E7EDF3; --muted:#8CA0B3; --amber:#F2A93B; --green:#4FB477;
+  --font-display:'Space Grotesk',sans-serif; --font-body:'IBM Plex Sans',sans-serif; --font-mono:'IBM Plex Mono',monospace;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  box-sizing:border-box;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.55;}
+img{max-width:100%;}
+a{color:inherit;}
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(11,15,20,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-soft);}
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1040px;margin:0 auto;}
+.brand{font-family:var(--font-mono);font-size:14px;color:var(--muted);letter-spacing:.02em;}
+.brand strong{color:var(--text);font-weight:500;}
+nav{display:flex;gap:26px;font-family:var(--font-mono);font-size:13px;}
+nav a{text-decoration:none;color:var(--muted);}
+nav a:hover, nav a:focus-visible{color:var(--amber);}
+nav a:focus-visible{outline:1px solid var(--amber);outline-offset:4px;}
+
+.hero{padding:72px 0 56px;}
+.hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center;}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(34px,4.6vw,52px);line-height:1.08;margin:0 0 18px;letter-spacing:-.01em;}
+.role{font-family:var(--font-mono);color:var(--amber);font-size:15px;margin:0 0 20px;}
+.lede{color:var(--muted);font-size:17px;max-width:46ch;margin:0 0 30px;}
+.readout{display:flex;gap:32px;flex-wrap:wrap;}
+.readout div{font-family:var(--font-mono);}
+.readout b{display:block;font-size:22px;color:var(--text);font-weight:500;}
+.readout span{font-size:12px;color:var(--muted);}
+.contact-row{margin-top:34px;display:flex;gap:18px;flex-wrap:wrap;font-family:var(--font-mono);font-size:13px;}
+.contact-row a{border-bottom:1px solid var(--line);text-decoration:none;padding-bottom:2px;}
+.contact-row a:hover{border-color:var(--amber);color:var(--amber);}
+
+.diagram{border:1px solid var(--line);background:var(--panel);border-radius:2px;padding:18px;}
+.diagram svg{width:100%;height:auto;display:block;}
+.diagram .cap{font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-top:10px;text-align:center;}
+
+section{padding:56px 0;border-top:1px solid var(--line-soft);}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:30px;}
+.sec-head h2{font-family:var(--font-display);font-size:22px;font-weight:600;margin:0;}
+.sec-head .n{font-family:var(--font-mono);color:var(--amber);font-size:13px;}
+
+.exp-block{border:1px solid var(--line);background:var(--panel);padding:26px 28px;border-radius:2px;}
+.exp-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.exp-top h3{margin:0;font-size:18px;font-weight:600;font-family:var(--font-display);}
+.exp-top .co{color:var(--muted);font-size:14px;margin-top:3px;}
+.exp-top .dates{font-family:var(--font-mono);font-size:12px;color:var(--muted);white-space:nowrap;}
+.exp-block ul{margin:0;padding-left:18px;color:var(--muted);font-size:14.5px;}
+.exp-block li{margin-bottom:8px;}
+.exp-block li::marker{color:var(--amber);}
+
+.projects{display:grid;gap:20px;}
+.proj{border:1px solid var(--line);background:var(--panel);border-radius:2px;padding:26px 28px;}
+.proj-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:6px;}
+.proj-head h3{font-family:var(--font-display);font-size:18px;font-weight:600;margin:0;}
+.proj-tag{font-family:var(--font-mono);font-size:11px;color:var(--green);}
+.proj-role{color:var(--muted);font-size:13.5px;margin:0 0 14px;}
+.proj ul{margin:0 0 16px;padding-left:18px;font-size:14.5px;color:var(--muted);}
+.proj li{margin-bottom:7px;}
+.proj li::marker{color:var(--amber);}
+.stack{display:flex;flex-wrap:wrap;gap:8px;}
+.stack span{font-family:var(--font-mono);font-size:11.5px;color:var(--muted);border:1px solid var(--line);padding:4px 9px;border-radius:2px;}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);}
+.skill-cell{background:var(--bg);padding:20px 22px;}
+.skill-cell h4{font-family:var(--font-mono);font-size:12px;color:var(--amber);margin:0 0 10px;font-weight:500;}
+.skill-cell p{margin:0;font-size:13.5px;color:var(--muted);}
+
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl-item{display:grid;grid-template-columns:28px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line-soft);}
+.tl-item:last-child{border-bottom:none;}
+.tl-dot{font-family:var(--font-mono);color:var(--amber);font-size:12px;padding-top:2px;}
+.tl-item h4{margin:0 0 3px;font-size:15px;font-weight:600;font-family:var(--font-display);}
+.tl-item p{margin:0;color:var(--muted);font-size:13.5px;}
+.tl-item .yr{font-family:var(--font-mono);font-size:12px;color:var(--muted);}
+
+.certs{display:grid;gap:10px;}
+.cert{display:flex;justify-content:space-between;gap:16px;font-size:14px;border-bottom:1px solid var(--line-soft);padding-bottom:10px;flex-wrap:wrap;}
+.cert span:last-child{font-family:var(--font-mono);color:var(--muted);font-size:12px;white-space:nowrap;}
+
+footer{padding:48px 0 60px;text-align:center;}
+footer p{color:var(--muted);font-size:13px;font-family:var(--font-mono);}
+
+@media(max-width:760px){
+  .hero-grid{grid-template-columns:1fr;gap:36px;}
+  nav{display:none;}
+  .exp-top{flex-direction:column;}
+}
+@media (prefers-reduced-motion: reduce){ .pulse{animation:none !important;} }
+.pulse{animation:blink 2.6s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:.35;}50%{opacity:1;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="brand"><strong>ALOK KUMAR</strong> / dev.log</div>
+    <nav>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" style="border-top:none;">
+    <div class="hero-grid">
+      <div>
+        <p class="role">Software Developer — Full Stack Engineer</p>
+        <h1>Building systems that connect, predict, and hold up under load.</h1>
+        <p class="lede">Full-stack engineer with production experience across React, React Native, Spring Boot, and Node — and a habit of reaching for ML and optimization when a plain CRUD app won't cut it.</p>
+        <div class="readout">
+          <div><b>5</b><span>systems integrated in one platform</span></div>
+          <div><b>90%+</b><span>accuracy, skin-tone CV model</span></div>
+          <div><b>10+</b><span>languages &amp; frameworks in daily use</span></div>
+        </div>
+        <div class="contact-row">
+          <a href="mailto:alokkumar12345@gmail.com">alokkumar12345@gmail.com</a>
+          <a href="tel:+916205222812">+91 62052 22812</a>
+          <a href="https://linkedin.com/in/alok-kumar-12345" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/Alokkumar12345" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="diagram">
+        <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#233040" stroke-width="1.5" fill="none">
+            <line x1="160" y1="130" x2="70" y2="40"/>
+            <line x1="160" y1="130" x2="250" y2="40"/>
+            <line x1="160" y1="130" x2="45" y2="150"/>
+            <line x1="160" y1="130" x2="275" y2="150"/>
+            <line x1="160" y1="130" x2="160" y2="230"/>
+          </g>
+          <circle cx="160" cy="130" r="26" fill="#111820" stroke="#F2A93B" stroke-width="1.5"/>
+          <text x="160" y="134" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#F2A93B">IMBPS</text>
+
+          <g font-family="IBM Plex Mono" font-size="10" fill="#8CA0B3">
+            <circle class="pulse" cx="70" cy="40" r="16" fill="#111820" stroke="#4FB477" stroke-width="1.5" style="animation-delay:0s"/>
+            <text x="70" y="44" text-anchor="middle" fill="#E7EDF3">TMS</text>
+
+            <circle class="pulse" cx="250" cy="40" r="16" fill="#111820" stroke="#4FB477" stroke-width="1.5" style="animation-delay:.3s"/>
+            <text x="250" y="44" text-anchor="middle" fill="#E7EDF3">SMMS</text>
+
+            <circle class="pulse" cx="45" cy="150" r="16" fill="#111820" stroke="#4FB477" stroke-width="1.5" style="animation-delay:.6s"/>
+            <text x="45" y="154" text-anchor="middle" fill="#E7EDF3">TDMS</text>
+
+            <circle class="pulse" cx="275" cy="150" r="16" fill="#111820" stroke="#4FB477" stroke-width="1.5" style="animation-delay:.9s"/>
+            <text x="275" y="154" text-anchor="middle" fill="#E7EDF3">COA</text>
+
+            <circle class="pulse" cx="160" cy="230" r="16" fill="#111820" stroke="#4FB477" stroke-width="1.5" style="animation-delay:1.2s"/>
+            <text x="160" y="234" text-anchor="middle" fill="#E7EDF3">BDMS</text>
+          </g>
+        </svg>
+        <p class="cap">Railway maintenance &amp; block-planning platform — 5 subsystems, one scheduling core</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><span class="n">01</span><h2>Experience</h2></div>
+    <div class="exp-block">
+      <div class="exp-top">
+        <div>
+          <h3>Software Developer</h3>
+          <div class="co">Vedantic Business Cloud — Punjab, India</div>
+        </div>
+        <div class="dates">Mar 2026 — Present</div>
+      </div>
+      <ul>
+        <li>Improved React.js interfaces across web application workflows by refining component structure, responsive layouts, and user interactions.</li>
+        <li>Extended functionality across web and mobile by translating React.js workflows into React Native, adding mobile-specific features.</li>
+        <li>Built backend services and REST APIs with Spring Boot and Java to support application and mobile integrations.</li>
+        <li>Containerized services with Docker for consistent development and deployment environments.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head"><span class="n">02</span><h2>Projects</h2></div>
+    <div class="projects">
+
+      <div class="proj">
+        <div class="proj-head"><h3>IMBPS — Integrated Maintenance &amp; Block Planning System</h3><span class="proj-tag">ML + optimization</span></div>
+        <p class="proj-role">AI-assisted railway maintenance platform unifying five systems into one scheduling core.</p>
+        <ul>
+          <li>Integrated TMS, SMMS, TDMS, COA and BDMS for maintenance demand planning, block coordination, and scheduling.</li>
+          <li>Built three prediction pipelines — duration, risk, priority — with scikit-learn and XGBoost.</li>
+          <li>Trained duration models on 2,500 historical records per system, generating predictions for 2,500 operational demands each via PostgreSQL/Neon.</li>
+          <li>Compared four regression algorithms by MAE on an 80/20 split for maintenance-duration prediction.</li>
+          <li>Formulated scheduling as a constraint-optimization problem in Google OR-Tools across timetables, block availability, and resources.</li>
+        </ul>
+        <div class="stack"><span>FastAPI</span><span>Python</span><span>PostgreSQL</span><span>React</span><span>XGBoost</span><span>OR-Tools</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-head"><h3>Kavachi — AI-Assisted Fashion E-Commerce</h3><span class="proj-tag">computer vision</span></div>
+        <p class="proj-role">Mobile shopping app that recommends clothing colors from a skin-tone analysis model.</p>
+        <ul>
+          <li>Built the React Native app end to end — authentication, catalog, filtering, cart, and order management.</li>
+          <li>Built a Python/OpenCV face and skin-tone analysis module, removing manual color selection from the flow.</li>
+          <li>Reached 90%+ accuracy in testing for personalized clothing recommendations.</li>
+          <li>Split the backend into two services — Node/Express for app APIs, Python/OpenCV for vision — with Firebase/Firestore.</li>
+        </ul>
+        <div class="stack"><span>React Native</span><span>Node.js</span><span>Express</span><span>Firebase</span><span>Python</span><span>OpenCV</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-head"><h3>CrackME — DSA Progress &amp; Practice Platform</h3><span class="proj-tag">web</span></div>
+        <p class="proj-role">A structured practice tracker for interview-style DSA prep.</p>
+        <ul>
+          <li>Supports five problem sheets — Love Babbar, Faraz, Blind 75, Striver, plus custom sheets.</li>
+          <li>Google Authentication and Firebase power individual accounts and persistent progress tracking.</li>
+          <li>Organizes practice across 10+ categories: arrays, strings, linked lists, stacks, queues, trees, graphs, recursion, DP, binary search.</li>
+        </ul>
+        <div class="stack"><span>React</span><span>Next.js</span><span>Firebase</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><span class="n">03</span><h2>Skills</h2></div>
+    <div class="skills-grid">
+      <div class="skill-cell"><h4>Languages</h4><p>C, C++, Java, JavaScript, TypeScript, Python, SQL</p></div>
+      <div class="skill-cell"><h4>Frontend</h4><p>React.js, React Native, Next.js, HTML5, CSS3, Tailwind CSS</p></div>
+      <div class="skill-cell"><h4>Backend</h4><p>Spring Boot, Node.js, Express.js, FastAPI, REST APIs, MVC</p></div>
+      <div class="skill-cell"><h4>Databases</h4><p>PostgreSQL, MongoDB, Mongoose, Firebase Firestore, Neon</p></div>
+      <div class="skill-cell"><h4>AI / ML</h4><p>scikit-learn, XGBoost, OpenCV, Google Gemini API</p></div>
+      <div class="skill-cell"><h4>Tooling</h4><p>Google OR-Tools, Docker, Git, GitHub, Postman, Vercel, Render</p></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-head"><span class="n">04</span><h2>Education</h2></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">●</div>
+        <div><h4>B.Tech, Computer Science &amp; Engineering</h4><p>Lovely Professional University, Punjab — CGPA 7.88 <span class="yr">· 2024 – Expected 2028</span></p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">●</div>
+        <div><h4>Class XII, CBSE — 72%</h4><p>K.D. International School, Rajdhanwar, Jharkhand <span class="yr">· 2024</span></p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">●</div>
+        <div><h4>Class X, CBSE — 88%</h4><p>Jawahar Navodaya Vidyalaya, Giridih, Jharkhand <span class="yr">· 2022</span></p></div>
+      </div>
+    </div>
+
+    <div style="margin-top:36px;">
+      <div class="sec-head" style="margin-bottom:16px;"><h2 style="font-size:16px;">Certifications</h2></div>
+      <div class="certs">
+        <div class="cert"><span>Code-A-Haunt 2.0 — cleared 1 level among 500+ teams, State-Level Inter-University Hackathon, CodingBlocks LPU</span><span>Feb 2025</span></div>
+        <div class="cert"><span>Data Structures and Algorithms — CipherSchools / LPU</span><span>Aug 2026</span></div>
+        <div class="cert"><span>Database Management System Part 1 — Infosys Springboard</span><span>Aug 2026</span></div>
+        <div class="cert"><span>Programming Using C++ — Infosys Springboard</span><span>Aug 2025</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <p>alokkumar12345@gmail.com · +91 62052 22812 · Punjab, India</p>
+</footer>
+
+</body>
+</html>
